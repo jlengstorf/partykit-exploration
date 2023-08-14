@@ -1,0 +1,19 @@
+---
+import Layout from "../components/layout.astro";
+import { ReactionDisplay } from "../components/reaction-display";
+---
+
+<Layout>
+  <ReactionDisplay client:only />
+</Layout>
+
+<style is:global>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
+</style>

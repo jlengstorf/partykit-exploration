@@ -1,0 +1,14 @@
+.display {
+  background: red;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+}
+
+.reactionIcon {
+  left: 0;
+  position: absolute;
+  top: 100%;
+  width: 40px;
+}
