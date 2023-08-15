@@ -115,6 +115,7 @@ import Layout from '../components/layout.astro';
 	import { gsap } from 'gsap';
 	import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 	import { init } from '../util/partykit';
+	import type { Props } from 'astro/components/ViewTransitions.astro';
 
 	gsap.registerPlugin(MotionPathPlugin);
 
@@ -140,11 +141,16 @@ import Layout from '../components/layout.astro';
 
 			log.textContent += '\n' + JSON.stringify(msg);
 		},
-		onMessage({ data }) {
+		onMessage({ type, data }) {
+			if (type !== 'reaction') {
+				return;
+			}
+
 			const icon = getIcon(data.type);
 
 			if (!icon) {
 				console.error('no icon loaded');
+				console.log({ type, data });
 				return;
 			}
 
