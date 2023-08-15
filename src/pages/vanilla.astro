@@ -121,7 +121,12 @@ import Layout from '../components/layout.astro';
 	function getIcon(type: string) {
 		const id = `#icon-${type}`;
 		const template = document.querySelector(id) as HTMLTemplateElement;
-		return template.content.firstElementChild!.cloneNode(true);
+
+		if (!template || !template.content.firstElementChild) {
+			return null;
+		}
+
+		return template.content.firstElementChild.cloneNode(true);
 	}
 
 	const container = document.querySelector('#reactions');
