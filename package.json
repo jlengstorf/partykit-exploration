@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "dev:server": "npx partykit dev server/index.ts",
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
