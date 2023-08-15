@@ -90,7 +90,12 @@ export const ReactionDisplay = () => {
           return;
         }
 
-        setIcons((icons) => [...icons, { id: Date.now(), type: data.type }]);
+        const id = Date.now();
+        setIcons((icons) => [...icons, { id, type: data.type }]);
+
+        setTimeout(() => {
+          setIcons((icons) => icons.filter((icon) => icon.id !== id));
+        }, 2000);
       },
     });
   }, []);

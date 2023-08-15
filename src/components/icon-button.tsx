@@ -8,18 +8,18 @@ import styles from './icon-button.module.css';
 export const IconButton = ({ icon }: { icon: 'heart' | 'light-bulb' }) => {
 	const { user } = useUser();
 	const btn = useRef(null);
-	const heart = useRef(null);
+	const iconRef = useRef(null);
 
 	function animate() {
 		const timeline = gsap.timeline();
 
-		timeline.set(heart.current, {
+		timeline.set(iconRef.current, {
 			y: 0,
 			scale: 0.25,
 			opacity: 1,
 		});
 
-		timeline.to(heart.current, {
+		timeline.to(iconRef.current, {
 			scale: 2,
 			y: -10,
 			opacity: 0,
@@ -53,14 +53,9 @@ export const IconButton = ({ icon }: { icon: 'heart' | 'light-bulb' }) => {
 	const Icon = icon === 'heart' ? Heart : LightBulb;
 
 	return (
-		<button
-			ref={btn}
-			className={styles.button}
-			data-type="heart"
-			onClick={handleClick}
-		>
+		<button ref={btn} className={styles.button} onClick={handleClick}>
 			<Icon />
-			<Icon ref={heart} className={styles.animator} />
+			<Icon ref={iconRef} className={styles.animator} />
 		</button>
 	);
 };
