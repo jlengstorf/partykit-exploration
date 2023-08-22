@@ -9,6 +9,7 @@ import {
 } from '@clerk/clerk-react';
 import styles from './react-buttons.module.css';
 import { IconButton } from './icon-button';
+import { Chat } from './admin/chat';
 
 const key = import.meta.env.PUBLIC_CLERK_PUBLISHABLE_KEY;
 
@@ -23,6 +24,21 @@ const UserBar = () => {
 	);
 };
 
+const AdminDashboard = () => {
+	const { user } = useUser();
+	const roles = (user?.publicMetadata.roles as Array<'admin'>) || [];
+
+	if (!roles.includes('admin')) {
+		return null;
+	}
+
+	return (
+		<SignedIn>
+			<Chat />
+		</SignedIn>
+	);
+};
+
 export const ReactionButtons = () => {
 	return (
 		<ClerkProvider publishableKey={key}>
@@ -32,6 +48,8 @@ export const ReactionButtons = () => {
 					<IconButton icon="heart" />
 					<IconButton icon="light-bulb" />
 				</div>
+
+				<AdminDashboard />
 			</SignedIn>
 			<SignedOut>
 				<div className={styles.signIn}>

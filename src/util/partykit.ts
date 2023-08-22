@@ -2,7 +2,8 @@ import PartySocket from 'partysocket';
 import { throttle } from './throttle';
 
 const partySocket = new PartySocket({
-	host: import.meta.env.PUBLIC_PARTYKIT_SERVER,
+	// host: import.meta.env.PUBLIC_PARTYKIT_SERVER,
+	host: 'localhost:1999',
 	room: import.meta.env.PUBLIC_PARTYKIT_ROOM,
 });
 
