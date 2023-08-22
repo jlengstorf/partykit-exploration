@@ -1,0 +1,6 @@
+.chat {
+	list-style: none;
+	margin: 2rem auto;
+	padding: 0;
+	width: min(90vw, 500px);
+}

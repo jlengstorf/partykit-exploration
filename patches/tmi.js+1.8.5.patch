@@ -1,0 +1,13 @@
+diff --git a/node_modules/tmi.js/lib/client.js b/node_modules/tmi.js/lib/client.js
+index f5f2f73..0aaee72 100755
+--- a/node_modules/tmi.js/lib/client.js
++++ b/node_modules/tmi.js/lib/client.js
+@@ -1,6 +1,6 @@
+ const _global = typeof global !== 'undefined' ? global : typeof window !== 'undefined' ? window : {};
+-const _WebSocket = _global.WebSocket || require('ws');
+-const _fetch = _global.fetch || require('node-fetch');
++const _WebSocket = WebSocket;
++const _fetch = fetch;
+ const api = require('./api');
+ const commands = require('./commands');
+ const EventEmitter = require('./events').EventEmitter;
