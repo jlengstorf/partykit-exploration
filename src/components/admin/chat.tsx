@@ -15,7 +15,7 @@ export const Chat = () => {
 					return;
 				}
 
-				setChat((messages) => [...messages, { data }]);
+				setChat((messages) => [{ data }, ...messages]);
 			},
 		});
 	}, []);
@@ -35,28 +35,26 @@ export const Chat = () => {
 			<ul className={styles.chat}>
 				{chat.map(({ data }) => {
 					return (
-						<>
-							<li>
-								<p>
-									<strong>{data.meta['display-name']}: </strong> {data.message}
-								</p>
-								<div className={styles.actions}>
-									<button
-										onClick={() => {
-											send({
-												type: 'highlight',
-												data: {
-													name: data.meta['display-name'],
-													message: data.message,
-												},
-											});
-										}}
-									>
-										highlight
-									</button>
-								</div>
-							</li>
-						</>
+						<li key={data.meta.id}>
+							<p>
+								<strong>{data.meta['display-name']}: </strong> {data.message}
+							</p>
+							<div className={styles.actions}>
+								<button
+									onClick={() => {
+										send({
+											type: 'highlight',
+											data: {
+												name: data.meta['display-name'],
+												message: data.message,
+											},
+										});
+									}}
+								>
+									highlight
+								</button>
+							</div>
+						</li>
 					);
 				})}
 			</ul>
