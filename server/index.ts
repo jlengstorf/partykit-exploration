@@ -65,6 +65,16 @@ export default {
 						meta,
 					},
 				});
+
+				if (meta['msg-id'] === 'highlighted-message') {
+					send({
+						type: 'highlight',
+						data: {
+							name: meta['display-name'],
+							message: msg,
+						},
+					});
+				}
 			});
 		} catch (error) {
 			console.log(error);
