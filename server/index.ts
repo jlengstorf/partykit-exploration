@@ -1,30 +1,26 @@
-import type {
-	PartyKitConnection,
-	PartyKitRoom,
-	PartyKitServer,
-} from 'partykit/server';
+import type { PartyConnection, Party, PartyKitServer } from 'partykit/server';
 import tmi from 'tmi.js';
 
-function sendWithWebSocket(_ws: PartyKitConnection, room: PartyKitRoom) {
+function sendWithWebSocket(_ws: PartyConnection, room: Party) {
 	return (message: { type: string; data: object }) => {
 		room.broadcast(
 			JSON.stringify({
 				...message,
 				room: {
 					id: room.id,
-					connections: room.connections.size,
+					connections: Array.from(room.getConnections()).length,
 				},
 			})
 		);
 	};
 }
 
-interface PartyKitRoomWithTwitch extends PartyKitRoom {
+interface PartyWithTwitch extends Party {
 	twitch?: tmi.Client;
 }
 
 export default {
-	async onConnect(ws, room: PartyKitRoomWithTwitch) {
+	async onConnect(ws, room: PartyWithTwitch) {
 		const send = sendWithWebSocket(ws, room);
 
 		try {

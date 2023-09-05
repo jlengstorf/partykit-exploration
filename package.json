@@ -13,14 +13,14 @@
 		"postinstall": "patch-package"
 	},
 	"dependencies": {
-		"@astrojs/react": "^2.2.1",
+		"@astrojs/react": "^3.0.0",
 		"@clerk/clerk-react": "^4.23.2",
 		"@types/react": "^18.2.20",
 		"@types/react-dom": "^18.2.7",
-		"astro": "^2.10.7",
+		"astro": "^3.0.8",
 		"gsap": "^3.12.2",
-		"partykit": "^0.0.0-e57200d",
-		"partysocket": "^0.0.0-e57200d",
+		"partykit": "^0.0.7",
+		"partysocket": "^0.0.3",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"tmi.js": "^1.8.5"
